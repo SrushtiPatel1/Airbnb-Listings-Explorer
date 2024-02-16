@@ -1,43 +1,28 @@
-import React from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import ListingDetail from '@/components/ListingDetail';
+import Error from 'next/error'
 import PageHeader from '@/components/PageHeader';
 
-const Listing = () => {
+export default function Listing() {
   const router = useRouter();
   const { id } = router.query;
 
-  // Fetch data using SWR
-  const { data, error, isValidating } = useSWR(`https://listingsapisp.onrender.com/api/listings/${id}`);
+  const { data, error, isValidating } = useSWR(id ? `https://listingsapisp.onrender.com/api/listings/${id}`:null);
 
-  // If data is still loading, return null
   if (isValidating) {
-    return null;
+    return null; 
   }
 
- 
-  if (error) {
-    
-    return <p>Listing not found!</p>;
+  if (!data || error ) {
+    return<Error statusCode={404} /> ; 
   }
-
-  if (!data) {
-    return <p>Listing not found!</p>;
-  }
-
-  const { name } = data;
 
   return (
     <div>
-      {/* PageHeader with listing's "name" property */}
-      <PageHeader text={`Listing: ${name}`} />
-
-      {/* ListingDetails with "listing" property */}
+      <PageHeader text={data.name}/>
       <ListingDetail listing={data} />
     </div>
   );
-};
-
-export default Listing;
+}
   //const { data, error, isValidating } = useSWR(`https://listingsapisp.onrender.com/api/listings/${id}`);
