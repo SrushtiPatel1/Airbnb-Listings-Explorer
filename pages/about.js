@@ -16,7 +16,7 @@ const about = ({ listing }) => {
             Welcome to SP site World!
             <br />
             <br />
-  I'm Srushti Patel, currently pursuing the Computer Programming course at Seneca College, with just one semester left before graduation. Engaged in a thrilling web project, my sights are set on becoming a proficient full-stack developer. With a passion for innovation and a commitment to continuous learning, I'm excited to harness the power of technology to create impactful solutions. Let's connect and embark on this coding journey together!
+  I am Srushti Patel, currently pursuing the Computer Programming course at Seneca College, with just one semester left before graduation. Engaged in a thrilling web project, my sights are set on becoming a proficient full-stack developer. With a passion for innovation and a commitment to continuous learning, I am excited to harness the power of technology to create impactful solutions. Let connect and embark on this coding journey together!
   If I ever designed my Bedroom , it would definetly looked something like this 
 
 <Link href={`/listing/${listing._id}`} passHref>
